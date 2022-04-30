@@ -48,7 +48,7 @@ def draw(draw_info, algor_name, ascending):
     controls = draw_info.FONT.render('R - Reset | Space - Start Sorting | A - Ascending | D - Descending', 1, draw_info.BLACK)
     draw_info.window.blit(controls, (draw_info.width/2 - controls.get_width()/2, 45))
 
-    sorting = draw_info.FONT.render('I - Insertion | B - Bubble Sorting', 1, draw_info.BLACK)
+    sorting = draw_info.FONT.render('I - Insertion | B - Bubble | S - Selection | G - Gnome ', 1, draw_info.BLACK)
     draw_info.window.blit(sorting, (draw_info.width/2 - sorting.get_width()/2, 75))
 
     draw_list(draw_info)
@@ -131,6 +131,24 @@ def selection_sort(draw_info, ascending = True):
         lst[i], lst[min_idx] = lst[min_idx], lst[i]
 
         draw_list(draw_info, {i: draw_info.GREEN, i + 1: draw_info.RED}, True)
+        yield True
+
+    return lst
+
+def gnomeSort(draw_info, ascending = True):
+    lst = draw_info.lst
+    index = 0
+
+    while index < len(lst):
+        if index == 0:
+            index = index + 1
+        if lst[index] >= lst[index - 1]:
+            index = index + 1
+        else:
+            lst[index], lst[index-1] = lst[index-1], lst[index]
+            index = index - 1
+
+        draw_list(draw_info, {index: draw_info.GREEN, index + 1: draw_info.RED}, True)
         yield True
 
     return lst
