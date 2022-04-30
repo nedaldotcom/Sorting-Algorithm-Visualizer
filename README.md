@@ -14,7 +14,8 @@
 ### Note
 -----------------
 * Make sure you have pygame installed before running the code.
-* Note that selection sort is currently supporting Ascendning order only.
+* To control the speed of sorting, please refer to clock.tick() function.
+* Note that Selection sort and Gnome are currently supporting Ascendning order only.
 
 ### Upcoming Updates
 -----------------
